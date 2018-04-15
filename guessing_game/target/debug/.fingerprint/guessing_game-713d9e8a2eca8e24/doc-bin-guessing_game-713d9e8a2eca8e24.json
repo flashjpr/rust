@@ -1,0 +1,1 @@
+{"rustc":18204830484536976040,"features":"[]","target":6035654596194783329,"profile":3065204103872014602,"path":1036222786711178230,"deps":[["rand v0.3.22",5437123865662842989],["rand v0.3.22",14122610858207125648]],"local":[{"Precalculated":"1523823718.296537732s (/Users/mihai-mbp/developer/rust/guessing_game/src/main.rs)"}],"rustflags":[],"epoch":"Epoch2015"}
