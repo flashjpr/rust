@@ -26,6 +26,25 @@ fn main() {
     );
 
     println!("Rect 2 is {:#?}", rect2);
+
+    // 3th try - calculating the area using a self Rect struct method
+    let rect3 = Rectangle {
+        width: 32,
+        height: 82,
+    };
+    
+    println!(
+        "The are of the rectangle is {} square pixels.", rect3.area()
+    );
+
+
+    // can a rect fit other rect?
+    let rect1 = Rectangle { width: 30, height: 50 };
+    let rect2 = Rectangle { width: 10, height: 40 };
+    let rect3 = Rectangle { width: 60, height: 45 };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 
 fn area(width: u32, height: u32) -> u32 {
@@ -45,4 +64,15 @@ struct Rectangle {
 // borrow the struct rather than take ownership of it!
 fn area3(rectangle: &Rectangle) -> u32 {
     rectangle.width * rectangle.height
+}
+
+// define a method "on" the Rectangle struct
+impl Rectangle {    // implementation block
+    fn area(&self) -> u32 { // borrowed as taking ownership is not intended 
+        self.width * self.height
+    }
+    
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
 }
