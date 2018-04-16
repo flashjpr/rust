@@ -60,4 +60,14 @@ fn main() {
     };
     println!("User details: {} {} {} {}", user5.name, user5.email, user5.active, user5.sign_in_count);
 
+
+
+    // tuple structs without named fields
+    struct Point(i32, i32, i32);
+    struct Color(i32, i32, i32);
+
+    let origin = Point(0, 0, 0);
+    let black = Color(0, 0, 0);
+
+    
 }
