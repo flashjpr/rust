@@ -33,7 +33,10 @@ fn main() {
     println!("Monero is worth ${}.", value_in_dollars(Coin::Monero));
     println!("Litecoin is worth ${}.", value_in_dollars(Coin::Litecoin));
 
-    println!("Value in cents for {}", value_in_cents(MetalCoin::Quarter(UsState::Alaska)));
+    println!(
+        "Value in cents for {}",
+        value_in_cents(MetalCoin::Quarter(UsState::Alaska))
+    );
 
     // Matching with Optional<T>
     let five = Some(5);
@@ -49,6 +52,20 @@ fn main() {
         3 => println!("Three"),
         _ => (), // '_' is wildcard, '()' is the unit value
     }
+
+    let some_u8_value = Some(0u8);
+    match some_number {
+        Some(3) => println!("Yey!"),
+        _ => (),
+    }
+
+    // same as above - less verbose way (but does not have the same exhaustive search that match enforces)
+    if let Some(3) = some_u8_value {
+        println!("Yey!");
+    } else {
+        () // same case as to the match-wildcard
+    }
+
 }
 
 enum IpAddrEx {
@@ -103,7 +120,7 @@ fn value_in_dollars(coin: Coin) -> u32 {
 #[derive(Debug)] // So we can inspect the state in a minute
 enum UsState {
     Alabama,
-    Alaska
+    Alaska,
 }
 
 enum MetalCoin {
@@ -121,7 +138,7 @@ fn value_in_cents(coin: MetalCoin) -> u32 {
         MetalCoin::Quarter(state) => {
             println!("State quarter from {:?}!", state);
             25
-        },
+        }
     }
 }
 
