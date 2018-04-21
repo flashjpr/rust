@@ -2,7 +2,7 @@ use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 
 fn main() {
     // create instances
-    let home = IpAddrEx::V4(127,0,0,1);
+    let home = IpAddrEx::V4(127, 0, 0, 1);
     let loopback = IpAddrEx::V6(String::from("::1"));
 
     // using the std library
@@ -13,14 +13,38 @@ fn main() {
 
     assert_eq!(v4.is_ipv4(), true);
     assert_eq!(v6.is_ipv6(), true);
+
+    // Message example
+    let m = Message::Write(String::from("whatever"));
+    m.call(); // print "ginger"
 }
 
 enum IpAddrEx {
     // attach data directly to each variant (no need for any extra structs)
-    V4(u8,u8,u8,u8),
+    V4(u8, u8, u8, u8),
     V6(String),
 }
 
+// here, each variant stores a different amounts types of values
+enum Message {
+    Quit,                           // no data
+    Move { x: i32, y: i32 },        // annonymous strcut 
+    Write(String),                  // String
+    ChangeColor(i32, i32, i32),     // i32 values
+}
 
+// the above is similar to defining the structs:
+struct QuitMessage; // unit struct
+struct MoveMessage {
+    x: i32,
+    y: i32,
+}
+struct WriteMessage(String); // tuple struct
+struct ChangeColorMessage(i32, i32, i32); // tuple struct
 
-
+impl Message {
+    fn call(&self) {
+        // whatever
+        println!("ginger");
+    }
+}
