@@ -17,6 +17,17 @@ fn main() {
     // Message example
     let m = Message::Write(String::from("whatever"));
     m.call(); // print "ginger"
+
+    // rust does NOT have nulls, but has an enum of None or Some
+    let some_number = Some(5);
+    let some_string = Some("anything");
+    let absent_number: Option<i32> = None; // need to tell the compiler what type of Option<T> we have
+
+    let x: i8 = 5;
+    let y: Option<i8> = Some(5);
+
+    let sum = x + y.unwrap(); 
+
 }
 
 enum IpAddrEx {
@@ -25,7 +36,7 @@ enum IpAddrEx {
     V6(String),
 }
 
-// here, each variant stores a different amounts types of values
+// here, each variant stores a different amounts and types of values
 enum Message {
     Quit,                           // no data
     Move { x: i32, y: i32 },        // annonymous strcut 
