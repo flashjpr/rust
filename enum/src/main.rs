@@ -26,8 +26,14 @@ fn main() {
     let x: i8 = 5;
     let y: Option<i8> = Some(5);
 
-    let sum = x + y.unwrap(); 
+    let sum = x + y.unwrap();
 
+    println!("Bitcoin is worth ${}.", value_in_dollars(Coin::Bitcoin));
+    println!("Ethereum is worth ${}.", value_in_dollars(Coin::Ethereum));
+    println!("Monero is worth ${}.", value_in_dollars(Coin::Monero));
+    println!("Litecoin is worth ${}.", value_in_dollars(Coin::Litecoin));
+
+    println!("Value in cents for {}", value_in_cents(MetalCoin::Quarter(UsState::Alaska)));
 }
 
 enum IpAddrEx {
@@ -38,10 +44,10 @@ enum IpAddrEx {
 
 // here, each variant stores a different amounts and types of values
 enum Message {
-    Quit,                           // no data
-    Move { x: i32, y: i32 },        // annonymous strcut 
-    Write(String),                  // String
-    ChangeColor(i32, i32, i32),     // i32 values
+    Quit,                       // no data
+    Move { x: i32, y: i32 },    // annonymous strcut
+    Write(String),              // String
+    ChangeColor(i32, i32, i32), // i32 values
 }
 
 // the above is similar to defining the structs:
@@ -57,5 +63,49 @@ impl Message {
     fn call(&self) {
         // whatever
         println!("ginger");
+    }
+}
+
+enum Coin {
+    Bitcoin,
+    Litecoin,
+    Ethereum,
+    Monero,
+}
+
+fn value_in_dollars(coin: Coin) -> u32 {
+    match coin {
+        Coin::Bitcoin => 8822,
+        Coin::Ethereum => 605,
+        Coin::Litecoin => 152,
+        Coin::Monero => {
+            println!("Lucky day"); // instructions
+            263 // still returns an u32
+        }
+    }
+}
+
+#[derive(Debug)] // So we can inspect the state in a minute
+enum UsState {
+    Alabama,
+    Alaska
+}
+
+enum MetalCoin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+fn value_in_cents(coin: MetalCoin) -> u32 {
+    match coin {
+        MetalCoin::Penny => 1,
+        MetalCoin::Nickel => 5,
+        MetalCoin::Dime => 10,
+        MetalCoin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+            25
+        },
     }
 }
