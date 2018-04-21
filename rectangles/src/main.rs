@@ -89,11 +89,11 @@ impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
     }
-
 }
 
 // associated functions (don't take self as a param)
-impl Rectangle { // multiple 'impl' blocks
+impl Rectangle {
+    // multiple 'impl' blocks
     fn square(size: u32) -> Rectangle {
         Rectangle {
             // create a square
