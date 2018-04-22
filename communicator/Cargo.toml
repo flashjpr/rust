@@ -1,0 +1,6 @@
+[package]
+name = "communicator"
+version = "0.1.0"
+authors = ["flashjpr <flashjpr@gmail.com>"]
+
+[dependencies]
