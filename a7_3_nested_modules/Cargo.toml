@@ -1,0 +1,6 @@
+[package]
+name = "a7_3_nested_modules"
+version = "0.1.0"
+authors = ["flashjpr"]
+
+[dependencies]

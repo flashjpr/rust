@@ -1,0 +1,6 @@
+[package]
+name = "a7_2privacy_examples"
+version = "0.1.0"
+authors = ["flashjpr <flashjpr@gmail.com>"]
+
+[dependencies]
